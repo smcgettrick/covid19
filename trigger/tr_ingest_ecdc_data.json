@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "pl_ecdc_data",
+					"referenceName": "pl_ingest_ecdc_data",
 					"type": "PipelineReference"
 				}
 			}
