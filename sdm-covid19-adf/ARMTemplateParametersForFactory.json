@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sdm-covid19-adf"
+		},
+		"ls_sdmcovid19stg01_connectionString": {
+			"value": ""
+		},
+		"ls_sdmcovid19stg02_accountKey": {
+			"value": ""
+		},
+		"ls_http_github_properties_typeProperties_url": {
+			"value": "https://github.com"
+		},
+		"ls_sdmcovid19stg02_properties_typeProperties_url": {
+			"value": "https://sdmcovid19stg02.dfs.core.windows.net/"
+		},
+		"tr_ingest_population_data_properties_typeProperties_scope": {
+			"value": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
+		}
+	}
+}
