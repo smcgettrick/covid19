@@ -33,7 +33,7 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/pl_ecdc_data')]",
+			"name": "[concat(parameters('factoryName'), '/pl_ingest_ecdc_data')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -779,7 +779,7 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "pl_ecdc_data",
+							"referenceName": "pl_ingest_ecdc_data",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -804,7 +804,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pl_ecdc_data')]"
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_ecdc_data')]"
 			]
 		},
 		{
@@ -1121,7 +1121,7 @@
 						"     skipDuplicateMapOutputs: true) ~> RemoveDuplicateColumns",
 						"RemoveDuplicateColumns split(indicator == 'Weekly new hospital admissions per 100k' || indicator == 'Weekly new ICU admissions per 100k',",
 						"     disjoint: false) ~> SplitDailyFromWeekly@(Weekly, Daily)",
-						"DimDateLookup aggregate(groupBy(ecdc_year_week = year + '-W' + lpad(week_of_year, 2, '0')),",
+						"DimDateLookup aggregate(groupBy(ecdc_year_week = year+'-W'+lpad(week_of_year,2,'0')),",
 						"     week_start_date = min(date),",
 						"          week_end_date = max(date)) ~> AggregateDimDate",
 						"SplitDailyFromWeekly@Weekly, AggregateDimDate join(reported_year_week == ecdc_year_week,",
