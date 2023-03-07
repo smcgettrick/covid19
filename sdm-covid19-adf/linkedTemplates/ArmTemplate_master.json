@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_sdmcovid19stg02'"
 		},
+		"ls_databricks_covid19_cluster_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_databricks_covid19_cluster'"
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://github.com"
@@ -26,6 +30,10 @@
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
+		},
+		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0307-200001-ovli8wgq"
 		},
 		"containerUri": {
 			"type": "string",
@@ -60,11 +68,17 @@
 					"ls_sdmcovid19stg02_accountKey": {
 						"value": "[parameters('ls_sdmcovid19stg02_accountKey')]"
 					},
+					"ls_databricks_covid19_cluster_accessToken": {
+						"value": "[parameters('ls_databricks_covid19_cluster_accessToken')]"
+					},
 					"ls_http_github_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_github_properties_typeProperties_url')]"
 					},
 					"ls_sdmcovid19stg02_properties_typeProperties_url": {
 						"value": "[parameters('ls_sdmcovid19stg02_properties_typeProperties_url')]"
+					},
+					"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},

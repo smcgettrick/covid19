@@ -11,6 +11,9 @@
 		"ls_sdmcovid19stg02_accountKey": {
 			"value": ""
 		},
+		"ls_databricks_covid19_cluster_accessToken": {
+			"value": ""
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"value": "https://github.com"
 		},
@@ -19,6 +22,9 @@
 		},
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"value": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
+		},
+		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
+			"value": "0307-200001-ovli8wgq"
 		}
 	}
 }
