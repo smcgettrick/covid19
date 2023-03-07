@@ -14,6 +14,9 @@
 		"ls_databricks_covid19_cluster_accessToken": {
 			"value": ""
 		},
+		"ls_azure_sql_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"value": "https://github.com"
 		},

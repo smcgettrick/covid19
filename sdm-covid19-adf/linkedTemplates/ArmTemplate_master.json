@@ -19,6 +19,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'ls_databricks_covid19_cluster'"
 		},
+		"ls_azure_sql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azure_sql'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://github.com"
@@ -70,6 +75,9 @@
 					},
 					"ls_databricks_covid19_cluster_accessToken": {
 						"value": "[parameters('ls_databricks_covid19_cluster_accessToken')]"
+					},
+					"ls_azure_sql_connectionString": {
+						"value": "[parameters('ls_azure_sql_connectionString')]"
 					},
 					"ls_http_github_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_github_properties_typeProperties_url')]"
