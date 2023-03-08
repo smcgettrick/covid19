@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "sdm-covid19-adf"
 		},
+		"ls_hdi_covid19_cluster_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_hdi_covid19_cluster'"
+		},
+		"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
@@ -144,6 +152,29 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ls_hdi_covid19_cluster')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HDInsight",
+				"typeProperties": {
+					"clusterUri": "https://sdm-covid19-hdi.azurehdinsight.net",
+					"userName": "[parameters('ls_hdi_covid19_cluster_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_hdi_covid19_cluster_password')]"
+					},
+					"isEspEnabled": false,
+					"linkedServiceName": {
+						"referenceName": "ls_sdmcovid19stg01",
+						"type": "LinkedServiceReference"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pl_ingest_ecdc_data')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -276,6 +307,9 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Extract"
 				},
 				"annotations": [],
 				"lastPublishTime": "2023-03-07T00:38:00Z"
@@ -461,6 +495,9 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Extract"
 				},
 				"annotations": [],
 				"lastPublishTime": "2023-03-01T15:39:46Z"
@@ -1000,6 +1037,9 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"folder": {
+					"name": "Load"
+				},
 				"annotations": []
 			},
 			"dependsOn": []
@@ -1169,6 +1209,9 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Load"
 				},
 				"annotations": []
 			},
@@ -1354,11 +1397,58 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"folder": {
+					"name": "Load"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_processed_testing')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_testing')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_process_testing_data')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Process Testing Data",
+						"type": "HDInsightHive",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"scriptPath": "scripts/hql/covid_transform_testing.hql",
+							"scriptLinkedService": {
+								"referenceName": "ls_sdmcovid19stg01",
+								"type": "LinkedServiceReference"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "ls_hdi_covid19_cluster",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Transform"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_hdi_covid19_cluster')]"
 			]
 		},
 		{
@@ -1402,6 +1492,9 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Transform"
 				},
 				"annotations": [],
 				"lastPublishTime": "2023-03-07T13:12:01Z"
@@ -1453,6 +1546,9 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"folder": {
+					"name": "Transform"
 				},
 				"annotations": [],
 				"lastPublishTime": "2023-03-07T13:12:01Z"

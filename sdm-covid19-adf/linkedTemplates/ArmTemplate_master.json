@@ -24,6 +24,10 @@
 			"metadata": "Secure string for 'connectionString' of 'ls_azure_sql'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
 		},
+		"ls_hdi_covid19_cluster_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_hdi_covid19_cluster'"
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://github.com"
@@ -39,6 +43,10 @@
 		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0307-200001-ovli8wgq"
+		},
+		"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin"
 		},
 		"containerUri": {
 			"type": "string",
@@ -105,6 +113,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"ls_hdi_covid19_cluster_password": {
+						"value": "[parameters('ls_hdi_covid19_cluster_password')]"
+					},
+					"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
+						"value": "[parameters('ls_hdi_covid19_cluster_properties_typeProperties_userName')]"
 					},
 					"tr_ingest_population_data_properties_typeProperties_scope": {
 						"value": "[parameters('tr_ingest_population_data_properties_typeProperties_scope')]"

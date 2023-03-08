@@ -17,6 +17,9 @@
 		"ls_azure_sql_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
 		},
+		"ls_hdi_covid19_cluster_password": {
+			"value": ""
+		},
 		"ls_http_github_properties_typeProperties_url": {
 			"value": "https://github.com"
 		},
@@ -28,6 +31,9 @@
 		},
 		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
 			"value": "0307-200001-ovli8wgq"
+		},
+		"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
+			"value": "admin"
 		},
 		"containerUri": {
 			"value": ""
