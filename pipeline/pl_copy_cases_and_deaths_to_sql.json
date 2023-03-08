@@ -156,6 +156,9 @@
 				]
 			}
 		],
+		"folder": {
+			"name": "Load"
+		},
 		"annotations": []
 	}
 }
