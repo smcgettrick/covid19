@@ -32,7 +32,7 @@
 		"ls_sdmcovid19stg02_properties_typeProperties_url": {
 			"value": "https://sdmcovid19stg02.dfs.core.windows.net/"
 		},
-		"tr_ingest_population_data_properties_typeProperties_scope": {
+		"tr_population_data_arrived_properties_typeProperties_scope": {
 			"value": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
 		},
 		"containerUri": {
