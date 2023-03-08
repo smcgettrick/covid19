@@ -6,6 +6,9 @@
 			"referenceName": "ls_sdmcovid19stg01",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Raw"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
