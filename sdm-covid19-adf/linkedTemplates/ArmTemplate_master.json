@@ -7,6 +7,19 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "sdm-covid19-adf"
 		},
+		"ls_azure_sql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azure_sql'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
+		},
+		"ls_databricks_covid19_cluster_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_databricks_covid19_cluster'"
+		},
+		"ls_hdi_covid19_cluster_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_hdi_covid19_cluster'"
+		},
 		"ls_sdmcovid19stg01_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_sdmcovid19stg01'"
@@ -15,18 +28,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_sdmcovid19stg02'"
 		},
-		"ls_databricks_covid19_cluster_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'ls_databricks_covid19_cluster'"
+		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0307-200001-ovli8wgq"
 		},
-		"ls_azure_sql_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ls_azure_sql'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sdmcovid19sql.database.windows.net;Initial Catalog=covid19db"
-		},
-		"ls_hdi_covid19_cluster_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'ls_hdi_covid19_cluster'"
+		"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin"
 		},
 		"ls_http_github_properties_typeProperties_url": {
 			"type": "string",
@@ -39,14 +47,6 @@
 		"tr_ingest_population_data_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/e8f8b10c-23ed-468c-8336-b4cfd55bc1aa/resourceGroups/sdm-covid19-rg/providers/Microsoft.Storage/storageAccounts/sdmcovid19stg01"
-		},
-		"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
-			"type": "string",
-			"defaultValue": "0307-200001-ovli8wgq"
-		},
-		"ls_hdi_covid19_cluster_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "admin"
 		},
 		"containerUri": {
 			"type": "string",
@@ -75,26 +75,26 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ls_azure_sql_connectionString": {
+						"value": "[parameters('ls_azure_sql_connectionString')]"
+					},
+					"ls_databricks_covid19_cluster_accessToken": {
+						"value": "[parameters('ls_databricks_covid19_cluster_accessToken')]"
+					},
 					"ls_sdmcovid19stg01_connectionString": {
 						"value": "[parameters('ls_sdmcovid19stg01_connectionString')]"
 					},
 					"ls_sdmcovid19stg02_accountKey": {
 						"value": "[parameters('ls_sdmcovid19stg02_accountKey')]"
 					},
-					"ls_databricks_covid19_cluster_accessToken": {
-						"value": "[parameters('ls_databricks_covid19_cluster_accessToken')]"
-					},
-					"ls_azure_sql_connectionString": {
-						"value": "[parameters('ls_azure_sql_connectionString')]"
+					"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId')]"
 					},
 					"ls_http_github_properties_typeProperties_url": {
 						"value": "[parameters('ls_http_github_properties_typeProperties_url')]"
 					},
 					"ls_sdmcovid19stg02_properties_typeProperties_url": {
 						"value": "[parameters('ls_sdmcovid19stg02_properties_typeProperties_url')]"
-					},
-					"ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId": {
-						"value": "[parameters('ls_databricks_covid19_cluster_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
